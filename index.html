@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3c969">
+  <meta name="description" content="Crie e organize suas tabelas com salvamento automático.">
+
+  <title>Minhas Tabelas</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <h1>Minhas Tabelas</h1>
+      <p>Suas tabelas, salvas no seu dispositivo.</p>
+    </div>
+    <span id="status" role="status">Carregando...</span>
+  </header>
+
+  <main class="layout">
+    <aside class="painel">
+      <h2>Minhas tabelas</h2>
+
+      <button id="novaTabela" class="botao principal">
+        + Nova tabela
+      </button>
+
+      <div id="listaTabelas" class="lista-tabelas"></div>
+
+      <div class="acoes-arquivo">
+        <button id="exportar" class="botao secundario">
+          Exportar backup
+        </button>
+
+        <button id="importar" class="botao secundario">
+          Importar backup
+        </button>
+
+        <input
+          id="arquivoBackup"
+          type="file"
+          accept=".json,application/json"
+          hidden
+        >
+      </div>
+
+      <p class="aviso">
+        Os dados ficam neste dispositivo. Exporte um backup para
+        poder recuperá-los caso perca os dados do aplicativo.
+      </p>
+    </aside>
+
+    <section class="conteudo">
+      <div class="barra-tabela">
+        <div>
+          <h2 id="tituloTabela">Minha tabela</h2>
+          <p id="descricaoTabela">Edite os valores abaixo.</p>
+        </div>
+
+        <div class="acoes-tabela">
+          <button id="renomear" class="botao secundario">
+            Renomear
+          </button>
+          <button id="excluir" class="botao perigo">
+            Excluir
+          </button>
+        </div>
+      </div>
+
+      <div class="legenda">
+        <span><i class="cor-amarela"></i> 9 e 10</span>
+        <span><i class="cor-vermelha"></i> 7 e 8</span>
+        <span><i class="cor-azul"></i> 5 e 6</span>
+        <span><i class="cor-preta"></i> 3 e 4</span>
+        <span><i class="cor-padrao"></i> 0, 1 e 2</span>
+      </div>
+
+      <div class="tabela-container">
+        <table id="tabela">
+          <thead>
+            <tr>
+              <th>Valor 1</th>
+              <th>Valor 2</th>
+              <th>Valor 3</th>
+              <th>Soma da linha</th>
+              <th>Total geral</th>
+            </tr>
+          </thead>
+          <tbody id="corpoTabela"></tbody>
+        </table>
+      </div>
+
+      <p class="rodape">
+        As alterações são salvas automaticamente.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
