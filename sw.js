@@ -1,5 +1,5 @@
 
-const CACHE = "minhas-tabelas-v7";
+const CACHE = "minhas-tabelas-v8";
 
 const ARQUIVOS = [
   "./",
