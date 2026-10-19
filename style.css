@@ -1,3 +1,4 @@
+
 :root {
   font-family: Arial, Helvetica, sans-serif;
   color: #242424;
@@ -202,12 +203,12 @@ button {
   background: #ffffff;
 }
 
-/* Tabela com bordas arredondadas */
+/* Área da tabela */
 .tabela-container {
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  overflow: auto;
+  overflow-x: auto;
   border: 1px solid #bfc4ca;
   border-radius: 14px;
   -webkit-overflow-scrolling: touch;
@@ -215,7 +216,7 @@ button {
 
 table {
   width: 100%;
-  min-width: 620px;
+  min-width: 760px;
   table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0;
@@ -227,8 +228,9 @@ td {
   border: none;
   border-right: 1px solid #bfc4ca;
   border-bottom: 1px solid #bfc4ca;
-  padding: 8px;
+  padding: 8px 5px;
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
 th:last-child,
@@ -245,11 +247,11 @@ td {
   height: 47px;
 }
 
+/* Valores editáveis */
 td.editavel {
   background: #ffffff;
 }
 
-/* Valores selecionáveis */
 td select {
   width: 100%;
   min-width: 0;
@@ -292,11 +294,19 @@ td select:focus {
   outline-offset: 1px;
 }
 
+/* Soma de cada linha */
 .soma-linha {
   background: #e8f0e8;
   font-weight: 700;
 }
 
+/* Quantidade de notas 9 e 10 */
+.quantidade-notas {
+  background: #fff2c4;
+  font-weight: 700;
+}
+
+/* Total geral da tabela */
 .total-geral {
   background: #f3d58a;
   font-size: 21px;
@@ -304,7 +314,23 @@ td select:focus {
   vertical-align: middle;
 }
 
-/* Arredondamento dos cantos externos */
+/* Linha final de totais */
+.linha-totais td,
+.linha-totais th {
+  background: #eceff3;
+  font-weight: 700;
+  border-top: 2px solid #aeb4bc;
+}
+
+.linha-totais td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+.linha-totais td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+/* Cantos da tabela */
 thead th:first-child {
   border-top-left-radius: 13px;
 }
@@ -330,6 +356,7 @@ tbody tr:last-child td {
   font-size: 13px;
 }
 
+/* Tablets e celulares */
 @media (max-width: 800px) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
@@ -360,26 +387,26 @@ tbody tr:last-child td {
     min-width: 0;
   }
 
-  /* Permite que a tabela use a largura do celular */
   .tabela-container {
     width: 100%;
     overflow-x: auto;
   }
 
+  /* Mantém as seis colunas legíveis */
   table {
-    min-width: 0;
+    min-width: 760px;
     width: 100%;
     table-layout: fixed;
   }
 
   th,
   td {
-    padding: 5px 2px;
+    padding: 6px 4px;
     overflow-wrap: anywhere;
   }
 
   th {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   td {
@@ -390,7 +417,7 @@ tbody tr:last-child td {
   td select {
     width: 100%;
     min-width: 0;
-    padding: 5px 0;
+    padding: 5px 2px;
     font-size: 12px;
     border-radius: 5px;
   }
@@ -406,6 +433,7 @@ tbody tr:last-child td {
   }
 }
 
+/* Celulares estreitos */
 @media (max-width: 430px) {
   .topo {
     align-items: flex-start;
@@ -424,7 +452,6 @@ tbody tr:last-child td {
     flex: 1;
   }
 
-  /* Redução adicional para celulares estreitos */
   .layout {
     padding: 0 6px;
   }
@@ -437,13 +464,18 @@ tbody tr:last-child td {
     border-radius: 9px;
   }
 
+  /* A tabela rola horizontalmente no celular */
+  table {
+    min-width: 760px;
+  }
+
   th,
   td {
-    padding: 4px 1px;
+    padding: 5px 3px;
   }
 
   th {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   td {
@@ -452,7 +484,7 @@ tbody tr:last-child td {
   }
 
   td select {
-    padding: 4px 0;
+    padding: 4px 2px;
     font-size: 11px;
   }
 

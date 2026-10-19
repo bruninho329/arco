@@ -1,20 +1,21 @@
 
 {
-  "id": "/",
+  "id": "./",
   "name": "Arco 2",
   "short_name": "Arco 2",
   "description": "Aplicativo de tabelas Arco 2",
-  "start_url": "/",
-  "scope": "/",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "orientation": "any",
+  "theme_color": "#f3c969",
+  "background_color": "#f5f6f8",
   "icons": [
     {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any"
     }
   ]

@@ -1,5 +1,5 @@
 
-const CACHE = "minhas-tabelas-v1";
+const CACHE = "minhas-tabelas-v6";
 
 const ARQUIVOS = [
   "./",
@@ -14,6 +14,7 @@ self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE).then(cache => cache.addAll(ARQUIVOS))
   );
+
   self.skipWaiting();
 });
 
@@ -45,7 +46,10 @@ self.addEventListener("fetch", event => {
           new URL(event.request.url).origin === self.location.origin
         ) {
           const copia = resposta.clone();
-          caches.open(CACHE).then(cache => cache.put(event.request, copia));
+
+          caches.open(CACHE).then(cache => {
+            cache.put(event.request, copia);
+          });
         }
 
         return resposta;
