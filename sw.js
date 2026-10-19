@@ -1,5 +1,5 @@
 
-const CACHE = "minhas-tabelas-v6";
+const CACHE = "minhas-tabelas-v7";
 
 const ARQUIVOS = [
   "./",
@@ -7,7 +7,8 @@ const ARQUIVOS = [
   "./style.css",
   "./script.js",
   "./manifest.json",
-  "./icon.svg"
+  "./icon.svg",
+  "./icon-512.png"
 ];
 
 self.addEventListener("install", event => {
