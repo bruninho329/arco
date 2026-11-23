@@ -355,6 +355,41 @@ async function excluirTabela() {
   }
 }
 
+// NOVA FUNÇÃO: APAGAR TODAS AS TABELAS
+async function apagarTodasTabelas() {
+  if (tabelas.length === 0) return;
+
+  const confirmacao = confirm(
+    `Tem certeza de que deseja apagar TODAS as ${tabelas.length} tabelas?\n\nEssa ação não pode ser desfeita. Se quiser guardar os dados, cancele e exporte um backup primeiro.`
+  );
+
+  if (!confirmacao) return;
+
+  try {
+    await new Promise((resolve, reject) => {
+      const transacao = db.transaction("tabelas", "readwrite");
+      transacao.objectStore("tabelas").clear();
+
+      transacao.oncomplete = () => resolve();
+      transacao.onerror = () => reject(transacao.error);
+      transacao.onabort = () => reject(transacao.error);
+    });
+
+    const primeira = novaEstrutura("Minha tabela");
+    tabelas = [primeira];
+    tabelaAtualId = primeira.id;
+
+    await salvarNoBanco(primeira);
+
+    informarStatus("Todas as tabelas foram apagadas");
+    desenharTudo();
+  } catch (erro) {
+    console.error(erro);
+    informarStatus("Erro ao apagar as tabelas", true);
+    alert("Não foi possível apagar todas as tabelas. Tente novamente.");
+  }
+}
+
 function baixarArquivo(nome, conteudo) {
   const arquivo = new Blob(
     [conteudo],
@@ -677,6 +712,10 @@ async function iniciar() {
     $("novaTabela").addEventListener("click", criarTabela);
     $("renomear").addEventListener("click", renomearTabela);
     $("excluir").addEventListener("click", excluirTabela);
+
+    // Evento do novo botão
+    $("apagarTodas").addEventListener("click", apagarTodasTabelas);
+
     $("exportar").addEventListener("click", exportarBackup);
     $("exportarPdf").addEventListener("click", exportarPdf);
 
@@ -714,4 +753,3 @@ async function iniciar() {
 }
 
 iniciar();
-
