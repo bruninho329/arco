@@ -1,5 +1,5 @@
 const BANCO = "MinhasTabelasDB";
-const VERSAO_BANCO = 2;
+const VERSAO_BANCO = 1;
 
 const CORES = {
   amarelo: [9, 10],
